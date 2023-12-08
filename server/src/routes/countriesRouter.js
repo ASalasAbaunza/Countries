@@ -17,7 +17,6 @@ countriesRouter.get('/', async (req, res) => {
 
 countriesRouter.get('/name', async (req, res) => {
     let { name } = req.query;
-    console.log(name);
     try {
         if (!name) {
             const response = await allPaises();
