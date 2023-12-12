@@ -37,9 +37,6 @@ countriesRouter.get('/name', async (req, res) => {
 
 countriesRouter.get('/:id', async (req, res) => {
     let { id } = req.params;
-    id = id.split('');
-    id.shift();
-    id = id.join('');
     try {
         const response = await getPais(id);
         if (response.error) {
