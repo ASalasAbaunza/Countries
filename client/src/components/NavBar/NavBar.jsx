@@ -1,11 +1,19 @@
 import React from 'react';
 import styles from "./ComponentStyles.module.css";
 import SearchBar from "./SearchBar";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
-    <div>NavBar</div>
+    <div>
+      <button>
+        <Link to='/home'>Home</Link>
+      </button>
+      <button>
+        <Link to='/form'>Register Activity</Link>
+      </button>
+      <SearchBar onSearch={props.onSearch}/>
+    </div>
   )
 }
 

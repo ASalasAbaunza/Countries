@@ -11,11 +11,15 @@ function App() {
   
   const location = useLocation();
 
+  const onSearch = () => {
+
+  };
+
   return (
     <div>
       {location.pathname!=='/' && (
         <div>
-          <NavBar/>
+          <NavBar onSearch={onSearch}/>
         </div>
       )}
       <Routes>
