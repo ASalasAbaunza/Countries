@@ -1,8 +1,70 @@
-import React from 'react'
+import React from 'react';
+import Cards from '../CountryCards/Cards';
+import SearchBar from '../SearchBar/SearchBar';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { filterCountries, getCountries, orderCountries, searchCountry } from '../../redux/actions';
 
 const Home = () => {
+
+  const countries = useSelector((state) => state.countries);
+  const dispatch = useDispatch();
+
+  const onSearch = (search) => {
+    search = search.trim();
+    dispatch(searchCountry(search));
+  };
+
+  const handleOrder = (event) => {
+    dispatch(orderCountries(event.target.value));
+  };
+
+  const handleFilter = (event) => {
+    dispatch(filterCountries(event.target.value));
+  };
+
+  const backToAll = () => {
+    dispatch(getCountries());
+  };
+
+  useEffect(() => {
+    dispatch(getCountries());
+  }, [dispatch]);
+
   return (
-    <div>Home</div>
+    <div>
+      <SearchBar onSearch={onSearch} backToAll={backToAll}/>
+      <div>
+        <label for='sort'>Sort</label>
+        <select onChange={handleOrder}>
+          <option value='--'>--</option>
+          <option value='Name'>By Name</option>
+          <option value='Population'>By Population</option>
+        </select>
+      </div>
+      <div>
+        <label for='filter'>Filter By</label>
+        <select onChange={handleFilter}>
+          <option value='All'>All</option>
+          <optgroup label='Continent'>
+            <option value='North America'>North America</option>
+            <option value='South America'>South America</option>
+            <option value='Europe'>Europe</option>
+            <option value='Asia'>Asia</option>
+            <option value='Africa'>Africa</option>
+            <option value='Oceania'>Oceania</option>
+            <option value='Antarctica'>Antarctica</option>
+          </optgroup>
+          <optgroup label='Activity Type'>
+            <option value='Spring'>Spring</option>
+            <option value='Summer'>Summer</option>
+            <option value='Fall'>Fall</option>
+            <option value='Winter'>Winter</option>
+          </optgroup>
+        </select>
+      </div>
+      <Cards countries={countries} />
+    </div>
   )
 }
 

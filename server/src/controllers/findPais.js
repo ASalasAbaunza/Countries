@@ -1,4 +1,4 @@
-const { Country } = require('../db');
+const { Country, Activity } = require('../db');
 const { Op } = require('sequelize');
 
 const findPais = async (name) => {
@@ -11,7 +11,14 @@ const findPais = async (name) => {
             name: {
                 [Op.iLike]: name
             }
-        }
+        },
+        include: {
+            model: Activity,
+            attributes: ["name", "difficulty", "duration", "season"],
+            through: {
+                attributes: [],
+            },
+        },
     })
     if (paises.length === 0) {
         return {error: 'No existen países con ese nombre'};

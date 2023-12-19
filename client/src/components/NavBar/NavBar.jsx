@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from "./ComponentStyles.module.css";
-import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 
-const NavBar = (props) => {
+const NavBar = () => {
   return (
     <div>
       <button>
@@ -12,7 +11,6 @@ const NavBar = (props) => {
       <button>
         <Link to='/form'>Register Activity</Link>
       </button>
-      <SearchBar onSearch={props.onSearch}/>
     </div>
   )
 }

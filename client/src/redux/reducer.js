@@ -10,7 +10,7 @@ import {
 
 const initialState = {
     countries: [],
-    filteredCountries: [],
+    allCountries: [],
     countryDetail: {},
     allActivities: [],
     newActivity: {},
@@ -22,6 +22,7 @@ const rootReducer = (state=initialState, { type, payload }) => {
             return {
                 ...state,
                 countries: payload,
+                allCountries: payload,
             };
 
         case GET_COUNTRY_DETAIL:
@@ -34,129 +35,125 @@ const rootReducer = (state=initialState, { type, payload }) => {
             return {
                 ...state,
                 countries: payload,
+                allCountries: payload,
             };
 
-        case ORDER_COUNTRIES:
+        case ORDER_COUNTRIES:    
             if (payload === 'Name') {
+                const sortedByName = [...state.countries].sort((a, b) => a.name.localeCompare(b.name));
                 return {
                     ...state,
-                    countries: state.countries.sort((a,b) => {
-                        a.name - b.name
-                    }),
+                    countries: sortedByName,
                 };
             } else if (payload === 'Population') {
+                const sortedByPopulation = [...state.countries].sort((a, b) => a.population - b.population);
                 return {
                     ...state,
-                    countries: state.countries.sort((a,b) => {
-                        a.population - b.population
-                    }),
+                    countries: sortedByPopulation,
                 };
             } else {
                 return {...state};
-            }
+            };
 
         case FILTER_COUNTRIES:
             if (payload === 'All') {
                 return {
                     ...state,
-                    filteredCountries: state.countries,
+                    countries: state.allCountries,
                 }
             } else {
                 switch (payload) {
                     case 'North America':
+                        let filterNA = [...state.allCountries].filter((country) => country.continent === payload);
                         return {
                             ...state,
-                            filteredCountries: state.countries.filter((country) => {
-                                country.continent === payload;
-                            }),
+                            countries: filterNA,
                         };
 
                     case 'South America':
+                        let filterSA = [...state.allCountries].filter((country) => country.continent === payload);
                         return {
                             ...state,
-                            filteredCountries: state.countries.filter((country) => {
-                                country.continent === payload;
-                            }),
+                            countries: filterSA,
                         };
 
                     case 'Europe':
+                        let filterE = [...state.allCountries].filter((country) => country.continent === payload);
                         return {
                             ...state,
-                            filteredCountries: state.countries.filter((country) => {
-                                country.continent === payload;
-                            }),
+                            countries: filterE,
                         };
 
                     case 'Asia':
+                        let filterAsia = [...state.allCountries].filter((country) => country.continent === payload);
                         return {
                             ...state,
-                            filteredCountries: state.countries.filter((country) => {
-                                country.continent === payload;
-                            }),
+                            countries: filterAsia,
                         };
 
                     case 'Africa':
+                        let filterAfrica = [...state.allCountries].filter((country) => country.continent === payload);
                         return {
                             ...state,
-                            filteredCountries: state.countries.filter((country) => {
-                                country.continent === payload;
-                            }),
+                            countries: filterAfrica,
                         };
 
                     case 'Oceania':
+                        let filterO = [...state.allCountries].filter((country) => country.continent === payload);
                         return {
                             ...state,
-                            filteredCountries: state.countries.filter((country) => {
-                                country.continent === payload;
-                            }),
+                            countries: filterO,
                         };
                         
                     case 'Antarctica':
+                        let filterAn = [...state.allCountries].filter((country) => country.continent === payload);
                         return {
                             ...state,
-                            filteredCountries: state.countries.filter((country) => {
-                                country.continent === payload;
-                            }),
+                            countries: filterAn,
                         };
 
                     case 'Spring':
+                        let filterSpring = [...state.allCountries].filter((country) => {
+                            return country.Activities.some((activity) => {
+                                return activity.season === payload;
+                            });
+                        });
                         return {
                             ...state,
-                            filteredCountries: state.countries.filter((country) => {
-                                return country.Activities.some((activity) => {
-                                    return activity.season === payload;
-                                });
-                            }),
+                            countries: filterSpring,
                         };
 
                     case 'Summer':
+                        let filterSummer = [...state.allCountries].filter((country) => {
+                            return country.Activities.some((activity) => {
+                                return activity.season === payload;
+                            });
+                        });
                         return {
                             ...state,
-                            filteredCountries: state.countries.filter((country) => {
-                                return country.Activities.some((activity) => {
-                                    return activity.season === payload;
-                                });
-                            }),
+                            countries: filterSummer,
                         };
 
                     case 'Fall':
+                        let filterF = [...state.allCountries].filter((country) => {
+                            return country.Activities.some((activity) => {
+                                return activity.season === payload;
+                            });
+                        });
                         return {
                             ...state,
-                            filteredCountries: state.countries.filter((country) => {
-                                return country.Activities.some((activity) => {
-                                    return activity.season === payload;
-                                });
-                            }),
+                            countries: filterF,
                         };
 
                     case 'Winter':
+                        let filterW = [...state.allCountries].filter((country) => {
+                            return country.Activities.some((activity) => {
+                                return activity.season === payload;
+                            });
+                        });
                         return {
                             ...state,
-                            filteredCountries: state.countries.filter((country) => {
-                                return country.Activities.some((activity) => {
-                                    return activity.season === payload;
-                                });
-                            }),
+                            countries: filterW,
                         };
                 
                     default:
