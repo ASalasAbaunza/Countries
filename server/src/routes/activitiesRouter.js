@@ -16,7 +16,7 @@ activitiesRouter.get('/', async (req, res) => {
 
 activitiesRouter.post('/', async (req, res) => {
     let { name, difficulty, duration, season, countries } = req.body;
-    if (!name || !difficulty || !season) {
+    if (!name || !difficulty || !season || !countries) {
         res.status(401).json({error: "Información incompleta"});
     } else if (typeof difficulty != 'number' || (duration && typeof duration != 'number')) {
         res.status(401).json({error: "Información incorrecta"});

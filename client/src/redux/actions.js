@@ -82,7 +82,7 @@ export const filterCountries = (filter) => {
 };
 
 export const postActivity = (activity) => {
-    const URL = 'http://localhost:3001/activity';
+    const URL = 'http://localhost:3001/activities';
     return async (dispatch) => {
         try {
             let res = await axios.post(URL, activity);
@@ -101,7 +101,7 @@ export const postActivity = (activity) => {
 };
 
 export const getActivities = () => {
-    const URL = 'http://localhost:3001/activity';
+    const URL = 'http://localhost:3001/activities';
     return async (dispatch) => {
         try {
             let res = await axios.get(URL);
