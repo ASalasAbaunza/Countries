@@ -1,0 +1,33 @@
+.divSearchBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #698FB7ff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.input {
+    border-radius: 5px;
+}
+
+.button {
+    background-color: #20495Cff;
+    border: 1px;
+    border-radius: 5px;
+    height: auto;
+    width: auto;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button:hover {
+    background-color: #28352Eff;
+}
+
+.button:disabled {
+    display: none;
+}

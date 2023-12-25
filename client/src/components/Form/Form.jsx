@@ -67,6 +67,8 @@ const Form = () => {
       alert('Please complete the needed information');
     } else {
       dispatch(postActivity({...form, duration: Number(form.duration)}));
+      setForm({...form, name: '', difficulty: 0, duration: '', season: '', countries: []});
+      setRating(0);
       alert('New activity created');
     }
   }

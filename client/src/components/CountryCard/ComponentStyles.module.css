@@ -1,0 +1,47 @@
+.divCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 17%;
+    background-color: #A6AFB7ff;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.divImg {
+    max-width: 95%;
+    height: fit-content;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+}
+
+.divData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.name {
+    color: #1B363Eff;
+    font-size: large;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.continent {
+    color: #1B363Eff;
+    font-size: small;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}

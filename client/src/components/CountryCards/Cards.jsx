@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from '../CountryCard/Card';
+import styles from './ComponentStyles.module.css';
 
 const Cards = (props) => {
   
@@ -22,20 +23,22 @@ const Cards = (props) => {
 
   return (
     <div>
+      <div className={styles.divCards}>
         {countryList}
-        <div>
-          <button onClick={() => setPage(1)} disabled={page === 1}>
-            First Page
-          </button>
-          <button onClick={() => setPage(page-1)} disabled={page === 1}>
-            Previous Page
-          </button>
-          <button onClick={() => setPage(page+1)} disabled={last >= props.countries.length}>
-            Next Page
-          </button>
-          <button onClick={() => setPage(Math.floor(props.countries.length/elements))} disabled={last >= props.countries.length}>
-            Last Page
-          </button>
+      </div>
+      <div className={styles.divButtons}>
+        <button className={styles.button} onClick={() => setPage(1)} disabled={page === 1}>
+          First Page
+        </button>
+        <button className={styles.button} onClick={() => setPage(page-1)} disabled={page === 1}>
+          Previous Page
+        </button>
+        <button className={styles.button} onClick={() => setPage(page+1)} disabled={last >= props.countries.length}>
+          Next Page
+        </button>
+        <button className={styles.button} onClick={() => setPage(Math.ceil(props.countries.length/elements))} disabled={last >= props.countries.length}>
+          Last Page
+        </button>
       </div>
     </div>
   )

@@ -1,0 +1,82 @@
+.divDetail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #28352Eff;
+    height: 100vh;
+}
+
+.divData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    text-align: center;
+    height: 100vh;
+}
+
+.divImg {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100vh;
+}
+
+.name {
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+}
+
+.data {
+    font-size: large;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+}
+
+.divActivityData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    text-align: center;
+}
+
+.divMiniCards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.button {
+    background-color: #232625ff;
+    border: 1px;
+    border-radius: 5px;
+    height: auto;
+    width: auto;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #20495Cff;
+}
+
+.button:disabled {
+    display: none;
+}

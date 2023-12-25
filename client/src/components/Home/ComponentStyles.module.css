@@ -1,0 +1,40 @@
+.divHome {
+    background-color: #1B363Eff;
+    height: auto;
+}
+
+.divSearchFilters {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.divFilters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.divSelectors {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    background-color: #698FB7ff;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.labels {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #232625ff;
+    margin-right: 5px;
+}
+
+.selector {
+    border-radius: 5px;
+}

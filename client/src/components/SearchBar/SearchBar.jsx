@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styles from './ComponentStyles.module.css';
 
 const SearchBar = (props) => {
   
@@ -10,13 +11,13 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div>
-      <input type='text' onChange={handleChange}/>
-      <button onClick={() => {
+    <div className={styles.divSearchBar}>
+      <input className={styles.input} type='text' onChange={handleChange}/>
+      <button className={styles.button} style={{marginLeft: '2px'}} onClick={() => {
         setBackButton(true);
         props.onSearch(search);
       }}>Search</button>
-      <button onClick={() => {
+      <button className={styles.button} style={{marginLeft: '10px'}} onClick={() => {
         setBackButton(false);
         props.backToAll();
       }} disabled={!backButton}>Back to All</button>
