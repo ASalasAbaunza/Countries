@@ -8,6 +8,22 @@
     padding: 5px;
 }
 
+.divButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 25%;
+}
+
+.divTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+}
+
 .button {
     background-color: #20495Cff;
     border: 1px;

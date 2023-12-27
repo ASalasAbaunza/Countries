@@ -1,0 +1,110 @@
+.divGeneral {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #232625ff;
+}
+
+.divForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #698FB7ff;
+    opacity: 85%;
+    padding: 20px;
+    height: auto;
+    width: max-content;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.divBlocks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px;
+}
+
+.divCountryList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.divLabelInputErrors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.divLabelInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #232625ff;
+}
+
+.label {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #232625ff;
+    font-weight: bold;
+}
+
+.labelError {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+}
+
+.input {
+    border-radius: 5px;
+}
+
+.buttonDifficulty {
+    background-color: transparent;
+    border: none;
+    font-size: x-large;
+}
+
+.button {
+    background-color: #20495Cff;
+    border: 1px;
+    border-radius: 5px;
+    height: auto;
+    width: auto;
+    padding: 7px;
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button:hover {
+    background-color: #28352Eff;
+}
+
+.customSelect {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .customSelect option[selected] {
+    background-color: #A6AFB7ff;
+    color: #232625ff;
+  }

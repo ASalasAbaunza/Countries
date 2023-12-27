@@ -8,17 +8,21 @@ export default function validate (property, form, errors, setErrors) {
             setErrors({...errors, name: ''});
         }
     } else if (property === 'duration') {
-        let duration = Number(form.duration);
-        if (typeof duration !== 'number') {
-            setErrors({...errors, duration: 'Duration must be a number'});
+        if (!form.duration) {
+            setErrors({...errors, duration: 'Missing duration of the activity'})
         } else {
-            const decimals = (form.duration.split('.')[1] || '').length;
-            if (decimals > 2) {
-                setErrors({...errors, duration: 'The duration of an activity can only have two decimals'});
-            } else if (duration > 2190) {
-                setErrors({...errors, duration: 'The duration of an activity cannot be longer than the equivalent of 3 months'});
+            let duration = Number(form.duration);
+            if (isNaN(duration)) {
+                setErrors({...errors, duration: 'Duration must be a number'});
             } else {
-                setErrors({...errors, duration: ''});
+                const decimals = (form.duration.split('.')[1] || '').length;
+                if (decimals > 2) {
+                    setErrors({...errors, duration: 'The duration of an activity can only have two decimals'});
+                } else if (duration > 2190) {
+                    setErrors({...errors, duration: 'The duration of an activity cannot be longer than the equivalent of 3 months'});
+                } else {
+                    setErrors({...errors, duration: ''});
+                }
             }
         }
     } else {

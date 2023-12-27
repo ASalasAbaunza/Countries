@@ -24,14 +24,14 @@ const Detail = () => {
   const currentPage = Activities && Array.isArray(Activities)
   ? Activities.slice(first, last) : null;
 
-  const activityDisplay = currentPage.map((activity) => (
-      <ActivityMiniCard 
-        key={activity.id}
-        name={activity.name}
-        difficulty={activity.difficulty}
-        duration={activity.duration}
-        season={activity.season}
-      />
+  const activityDisplay = currentPage && currentPage.map((activity) => (
+    <ActivityMiniCard 
+      key={activity.id}
+      name={activity.name}
+      difficulty={activity.difficulty}
+      duration={activity.duration}
+      season={activity.season}
+    />
   ));
   
   return (
@@ -52,7 +52,7 @@ const Detail = () => {
             <p>Cargando...</p>
           )}
         </div>
-        {activityDisplay && Activities.length > 0 && (
+        {activityDisplay && Activities && Activities.length > 0 && (
           <div className={styles.divActivityData}>
             <h1 className={styles.name}>Available Activities</h1>
             <div className={styles.divMiniCards}>
