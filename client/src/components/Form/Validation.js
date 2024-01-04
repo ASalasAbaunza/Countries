@@ -25,7 +25,7 @@ export default function validate (property, form, errors, setErrors) {
                 }
             }
         }
-    } else {
+    } else if (property === 'season') {
         if (form.season === 'NA') {
             setErrors({...errors, season: 'Please select a season in which the activity can be performed'});
         } else {

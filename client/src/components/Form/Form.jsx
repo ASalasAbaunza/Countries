@@ -1,17 +1,17 @@
 import React from 'react'
 import validate from './Validation'
-import { getCountries, postActivity } from '../../redux/actions';
+import { getCountries, orderCountries, postActivity } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ComponentStyles.module.css';
 
 const Form = () => {
 
-  const countries = useSelector((state) => state.countries);
+  let countries = useSelector((state) => state.countries);
   const newActivity = useSelector((state) => state.newActivity);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(getCountries);
+    dispatch(orderCountries('Name'));
     return () => {
       setForm({...form, name: '', difficulty: 0, duration: '', season: '', countries: []});
     };
@@ -39,6 +39,7 @@ const Form = () => {
   const handleRating = (rating) => {
     setRating(rating);
     setForm({...form, difficulty: rating});
+    setErrors({...errors, difficulty: ''});
   };
 
   const handleCountries = (event) => {
@@ -49,6 +50,7 @@ const Form = () => {
         break;
       }
     }
+    setErrors({...errors, countries: ''});
   };
 
   const handleChange = (event) => {
@@ -58,27 +60,29 @@ const Form = () => {
     validate(property, {...form, [property]: value}, errors, setErrors);
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
-    if (form.difficulty === 0 || !form.season || !form.countries) {
-      if (form.difficulty === 0) {
-        setErrors({...errors, difficulty: 'Please establish how difficult the activity is.'});
-      }
-      if (!form.countries) {
-        setErrors({...errors, countries: 'The activity must be available in at least one country.'});
-      }
-      if (!form.season) {
-        setErrors({...errors, countries: 'Please establish a season when the activity is available'});
-      }
+    if (form.difficulty === 0 || !form.season || form.countries.length === 0 || !form.name) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        name: !form.name ? 'Please establish a name for the activity.' : prevErrors.name,
+        difficulty: form.difficulty === 0 ? 'Please establish how difficult the activity is.' : prevErrors.difficulty,
+        season: !form.season ? 'Please establish a season when the activity is available.' : prevErrors.season,
+        countries: form.countries.length === 0 ? 'The activity must be available in at least one country.' : prevErrors.countries,
+      }));
       alert('Please complete the needed information');
     } else if (errors.name || errors.difficulty || errors.duration || errors.season || errors.countries) {
       alert('Please complete the needed information');
     } else {
-      dispatch(postActivity({...form, duration: Number(form.duration)}));
+      let activity = await dispatch(postActivity({...form, duration: Number(form.duration)}));
       setForm({...form, name: '', difficulty: 0, duration: '', season: '', countries: []});
       setRating(0);
       setFormSubmitted(true);
-      alert('New activity created');
+      alert(`New activity created! 
+      Name: ${activity.payload.name}
+      Difficulty: ${activity.payload.difficulty}
+      Duration: ${activity.payload.duration} hrs.
+      Season: ${activity.payload.season}`);
     }
   }
 

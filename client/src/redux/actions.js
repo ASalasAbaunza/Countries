@@ -62,7 +62,11 @@ export const searchCountry = (input) => {
                 });
             }
         } catch (error) {
-            window.alert(error.message);
+            if (error.response && error.response.status === 400) {
+                window.alert(error.response.data.error);
+            } else {
+                window.alert(error.message);
+            }
         }
     }
 };
